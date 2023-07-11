@@ -11,7 +11,7 @@
     "url": "coderHouse"
   },
   "type": "module",
-  "author": "yanina glaser",
+  "author": "Nahuel Raverta",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
