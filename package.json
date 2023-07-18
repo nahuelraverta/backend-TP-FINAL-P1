@@ -1,22 +1,17 @@
 {
-  "name": "proyecto-coderhouse",
+  "name": "backend-43385",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "coderHouse"
-  },
-  "type": "module",
-  "author": "Nahuel Raverta",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "nodemon": "2.0.22"
+    "start": "node --watch ./src/app.js"
   },
   "keywords": [],
-  "description": ""
+  "author": "nahuelraverta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
