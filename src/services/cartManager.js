@@ -1,3 +1,5 @@
+//services/cartManagers.js
+
 import fs from "fs";
 
 class Cart {
@@ -29,6 +31,7 @@ class CartManager {
   }
 
   // Agregar un producto a un carrito específico
+  
   async addProductToCart(cartId, prodId) {
     let dataCart = await fs.promises.readFile(this.path, "utf-8");
     let dataCartParse = JSON.parse(dataCart);
@@ -38,31 +41,28 @@ class CartManager {
       const prodIndex = cart.products.findIndex((prod) => prod.id === prodId);
       if (prodIndex !== -1) {
         cart.products[prodIndex].quantity++;
-        const cartIndex = dataCartParse.findIndex(
-          (cart) => cart.id === parseInt(cartId)
-        );
-        dataCartParse[cartIndex] = cart;
-
-        // Escribir los datos actualizados en el archivo
-        await fs.promises.writeFile(
-          this.path,
-          JSON.stringify(dataCartParse, null, 2)
-        );
       } else {
         let product = { id: prodId, quantity: 1 };
         cart.products.push(product);
-        dataCartParse.push(cart);
-
-        // Escribir los datos actualizados en el archivo
-        await fs.promises.writeFile(
-          this.path,
-          JSON.stringify(dataCartParse, null, 2)
-        );
       }
+
+      const cartIndex = dataCartParse.findIndex(
+        (cart) => cart.id === parseInt(cartId)
+      );
+      dataCartParse[cartIndex] = cart;
+
+      // Escribir los datos actualizados en el archivo
+      await fs.promises.writeFile(
+        this.path,
+        JSON.stringify(dataCartParse, null, 2)
+      );
+
+      res.send({ status: "Success", message: "Producto añadido con éxito!" });
     } else {
       console.log("Carrito no encontrado");
     }
   }
+
 
   // Obtener un carrito por su ID
   async getCartById(id) {

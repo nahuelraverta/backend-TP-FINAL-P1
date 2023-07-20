@@ -1,3 +1,4 @@
+//services/productManagers.js
 import fs from "fs";
 
 export default class ProductManager {
@@ -58,7 +59,7 @@ export default class ProductManager {
       let dataProdParse = JSON.parse(dataProduct);
       let product = dataProdParse.find((product) => product.id === id);
       if (product) {
-        return product;
+        return product.id; // Devolver solo el ID del producto
       } else {
         console.log(`No se encontró el producto con el ID: ${id}`);
         return null;
